@@ -12,7 +12,7 @@ const Navbar = () => {
   console.log(barToggle);
   return (
     <>
-      <div className="flex flex-row justify-between sticky top-0 w-screen">
+      <div className="flex flex-row justify-between sticky top-0  bg-custom-blue w-screen h-10 py-1">
         <div className="flex gap-2">
           <div className="flex relative">
             {!barToggle ? (
@@ -20,7 +20,7 @@ const Navbar = () => {
                 onClick={() => setBarToggle(!barToggle)}
                 icon={faBars}
                 size="xl"
-                className="mt-0.5"
+                className="mt-1"
               />
             ) : null}
             {barToggle && (
@@ -39,10 +39,10 @@ const Navbar = () => {
           </div>
 
           <div className="flex rounded-full bg-black-green">
-            <span className="px-2 rounded-full text-white font-bold text-lg">
+            <span className="px-2 pt-0.5 rounded-full text-white font-bold text-lg">
               Food
             </span>
-            <span className="rounded-full bg-orange-shade font-bold px-2 text-lg">
+            <span className="rounded-full bg-orange-shade font-bold px-2 pt-0.5 text-lg">
               Furry
             </span>
           </div>
