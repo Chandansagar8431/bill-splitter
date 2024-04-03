@@ -50,6 +50,7 @@ const Login = () => {
     setValidName(nameRegex.test(formObject.name));
     setValidEmail(emailRegex.test(formObject.email));
     setValidPassword(passwordRegex.test(formObject.password));
+    setValidMatch(true);
   }, [formObject]);
 
   //when onblur on the each input fields
