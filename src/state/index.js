@@ -5,8 +5,10 @@ const initialObject = {
   stage: null,
   products: [],
   orders: [],
-  shareCount: null,
+  shareCount: [],
   nonSharedLists: null,
+  total: null,
+  filter: { price: { isApplied: false, priceRange: {} }, category:{ isApplied:false,selectedCategories:[]} },
 };
 
 export const authAndProductSlice = createSlice({
@@ -31,10 +33,23 @@ export const authAndProductSlice = createSlice({
       state.orders = action.payload.orders;
     },
     setShareCount: (state, action) => {
-      state.shareCount = action.payload.count;
+      if (Array.isArray(action.payload)) {
+        console.log(action.payload.length);
+        state.shareCount = action.payload;
+      } else {
+        state.shareCount = [...state.shareCount, action.payload];
+        console.log(state.shareCount);
+      }
     },
     setNonSharedLists: (state, action) => {
       state.nonSharedLists = action.payload.lists;
+    },
+    setTotal: (state, action) => {
+      state.total = action.payload.amount;
+    },
+    setFilter: (state, action) => {
+      state.filter.category = action.payload.filter.category;
+      state.filter.price = action.payload.filter.price;
     },
   },
 });
@@ -46,6 +61,8 @@ export const {
   setStage,
   setShareCount,
   setNonSharedLists,
+  setTotal,
+  setFilter,
 } = authAndProductSlice.actions;
 
 export default authAndProductSlice.reducer;
