@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { setProducts, setFilter, setSearchedItems } from "../state";
+import { setFilter, setSearchedItems } from "../state";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faAngleDown,
@@ -11,7 +11,7 @@ import { faSquare } from "@fortawesome/free-regular-svg-icons";
 import { category } from "../data/categoryAndPriceInfo";
 
 const FliterByCategoryBar = ({
-  handleCategory,
+  handleCategoryAndPriceAsWell,
   setIsSearching,
   setPriceFilteredProducts,
 }) => {
@@ -27,8 +27,8 @@ const FliterByCategoryBar = ({
   const searchedItems = useSelector((state) => state.authAndProducts.searched);
 
   useEffect(() => {
-    handleCategory(...categoryFilter.selectedCategories);
-  }, [categoryFilter.selectedCategories, handleCategory]);
+    handleCategoryAndPriceAsWell(...categoryFilter.selectedCategories);
+  }, [categoryFilter.selectedCategories, handleCategoryAndPriceAsWell]);
 
   const handleFilter = (category) => {
     if (category === "category") {
