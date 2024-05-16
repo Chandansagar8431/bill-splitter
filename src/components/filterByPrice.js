@@ -48,8 +48,8 @@ const FilterByPrice = ({
           },
         })
       );
-      if (searchedItems?.length !== 0) {
-        dispatch(setSearchedItems({ searched: [] }));
+      if (searchedItems?.searchLists.length !== 0) {
+        dispatch(setSearchedItems({ searchLists: [], noResults: false }));
       }
       setIsSearching(false);
     } else {
@@ -67,8 +67,8 @@ const FilterByPrice = ({
           },
         })
       );
-      if (searchedItems?.length !== 0) {
-        dispatch(setSearchedItems({ searched: [] }));
+      if (searchedItems?.searchLists.length !== 0) {
+        dispatch(setSearchedItems({ searchLists: [], noResults: false }));
       }
       setIsSearching(false);
     }
