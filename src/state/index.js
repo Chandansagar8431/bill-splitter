@@ -8,7 +8,13 @@ const initialObject = {
   shareCount: [],
   nonSharedLists: null,
   total: null,
-  filter: { price: { isApplied: false, priceRange: {} }, category:{ isApplied:false,selectedCategories:[]} },
+  filter: {
+    price: { isApplied: false, priceRange: {} },
+    category: { isApplied: false, selectedCategories: [] },
+  },
+  directPriceFilter: [],
+  searchedItems: { searchLists: [], noResults: false },
+  cartEntries: JSON.parse(localStorage.getItem("cartCount")) || 0,
 };
 
 export const authAndProductSlice = createSlice({
@@ -51,6 +57,16 @@ export const authAndProductSlice = createSlice({
       state.filter.category = action.payload.filter.category;
       state.filter.price = action.payload.filter.price;
     },
+    setDirectPriceFilter: (state, action) => {
+      state.directPriceFilter = action.payload.directPriceFilteredItems;
+    },
+    setSearchedItems: (state, action) => {
+      state.searchedItems.searchLists = action.payload.searchLists;
+      state.searchedItems.noResults = action.payload.noResults;
+    },
+    setCartEntries: (state, action) => {
+      state.cartEntries = action.payload.entries;
+    },
   },
 });
 export const {
@@ -63,6 +79,9 @@ export const {
   setNonSharedLists,
   setTotal,
   setFilter,
+  setDirectPriceFilter,
+  setSearchedItems,
+  setCartEntries,
 } = authAndProductSlice.actions;
 
 export default authAndProductSlice.reducer;
